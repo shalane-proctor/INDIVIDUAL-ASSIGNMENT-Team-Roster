@@ -1,9 +1,15 @@
+import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
+import getPlayers from '../api/playerData';
+import PlayerCard from '../components/PlayerCard';
 import { useAuth } from '../utils/context/authContext';
 
 export default function TeamPage() {
+  const [players, setPlayers] = useState([]);
   const { user } = useAuth();
-  console.warn(user.uid);
+  useEffect(() => {
+    getPlayers(user.uid).then(setPlayers);
+  }, []);
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
@@ -19,6 +25,11 @@ export default function TeamPage() {
       <Button variant="info" type="button" size="lg" className="copy-btn">
         Add Player
       </Button>
+      <div className="flex-wrap">
+        {players.map((player) => (
+          <PlayerCard key={player.firebaseKey} playerObj={player} />
+        ))}
+      </div>
     </div>
   );
 }
