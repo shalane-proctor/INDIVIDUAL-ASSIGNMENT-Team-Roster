@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
+import { deletePlayer } from '../api/playerData';
 
-export default function PlayerCard({ playerObj }) {
+export default function PlayerCard({ playerObj, onUpdate }) {
   const deleteThisPlayer = () => {
-    (window.confirm(`Relieve ${playerObj.position} ${playerObj.name} of duty?`))(
-      console.warn('Player relieved of duty'),
-    );
+    if (window.confirm(`Relieve ${playerObj.position} ${playerObj.name} of duty?`)) {
+      deletePlayer(playerObj.firebaseKey).then(() => onUpdate());
+    }
   };
 
   return (
@@ -41,10 +42,10 @@ export default function PlayerCard({ playerObj }) {
         <Card.Text>Name: {playerObj.name}</Card.Text>
         <Card.Text>Team: {playerObj.team}</Card.Text>
         <Card.Text>Position: {playerObj.position}</Card.Text>
+        <Button variant="primary">Reassign</Button>
         <Button variant="primary" onClick={deleteThisPlayer}>
-          Reassign
+          Relieve of duty
         </Button>
-        <Button variant="primary">Relieve of duty</Button>
       </Card.Body>
     </Card>
   );
@@ -58,5 +59,5 @@ PlayerCard.propTypes = {
     imageUrl: PropTypes.string,
     firebaseKey: PropTypes.string,
   }).isRequired,
-  // onUpdate: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
