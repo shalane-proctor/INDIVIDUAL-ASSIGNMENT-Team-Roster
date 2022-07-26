@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
-import getPlayers from '../api/playerData';
+import { getPlayers } from '../api/playerData';
 import PlayerCard from '../components/PlayerCard';
 import { useAuth } from '../utils/context/authContext';
 
 export default function TeamPage() {
   const [players, setPlayers] = useState([]);
   const { user } = useAuth();
-  useEffect(() => {
+  const getAllPlayers = () => {
     getPlayers(user.uid).then(setPlayers);
+  };
+  useEffect(() => {
+    getAllPlayers();
   }, []);
   return (
     <div
@@ -27,7 +30,7 @@ export default function TeamPage() {
       </Button>
       <div className="flex-wrap">
         {players.map((player) => (
-          <PlayerCard key={player.firebaseKey} playerObj={player} />
+          <PlayerCard key={player.firebaseKey} playerObj={player} onUpdate={getAllPlayers} />
         ))}
       </div>
     </div>
