@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -42,7 +43,9 @@ export default function PlayerCard({ playerObj, onUpdate }) {
         <Card.Text>Name: {playerObj.name}</Card.Text>
         <Card.Text>Team: {playerObj.team}</Card.Text>
         <Card.Text>Position: {playerObj.position}</Card.Text>
-        <Button variant="primary">Reassign</Button>
+        <Link href={`/team/edit/${playerObj.firebaseKey}`} passHref>
+          <Button variant="primary">Reassign</Button>
+        </Link>
         <Button variant="primary" onClick={deleteThisPlayer}>
           Relieve of duty
         </Button>

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
-import { createPlayer } from '../../api/playerData';
+import { createPlayer, updatePlayer } from '../../api/playerData';
 
 const initialState = {
   imageUrl: 'https://www.maxpixel.net/static/photo/1x/Man-Sci-fi-Astronaut-Helmet-Portrait-Interference-6774653.jpg',
@@ -15,15 +15,15 @@ const initialState = {
   about: '',
 };
 
-export default function PlayerForm() {
+export default function PlayerForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   // const [team, setTeam] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
 
-  // useEffect(() => {
-  //   getPlayers(user.uid).then(setTeam);
-  // }, []);
+  useEffect(() => {
+    if (obj.firebaseKey) setFormInput(obj);
+  }, [obj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,15 +35,20 @@ export default function PlayerForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const payload = { ...formInput, uid: user.uid };
-    createPlayer(payload).then(() => {
-      router.push('/team');
-    });
+    if (obj.firebaseKey) {
+      updatePlayer(formInput)
+        .then(() => router.push('/team'));
+    } else {
+      const payload = { ...formInput, uid: user.uid };
+      createPlayer(payload).then(() => {
+        router.push('/team');
+      });
+    }
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2>Add Player</h2>
+      <h2>{obj.firebaseKey ? 'Reassign' : 'Add'} Player</h2>
       <FloatingLabel controlId="floatingTextarea" label="Name" className="mb-3">
         <Form.Control type="text" placeholder="Player Name" name="name" value={formInput.name} onChange={handleChange} required />
       </FloatingLabel>
@@ -56,19 +61,20 @@ export default function PlayerForm() {
       <FloatingLabel controlId="floatingTextarea2" label="About">
         <Form.Control type="text" placeholder="About" style={{ height: '100px' }} name="about" value={formInput.about} onChange={handleChange} />
       </FloatingLabel>
-      <Button type="submit">Add Player</Button>
+      <Button type="submit">{obj.firebaseKey ? 'Reassign' : 'Add'} Player</Button>
     </Form>
   );
 }
 PlayerForm.defaultProps = {
   obj: initialState,
 };
-// PlayerForm.propTypes = {
-//   obj: PropTypes.shape({
-//     imageUrl: PropTypes.string,
-//     name: PropTypes.string,
-//     position: PropTypes.string,
-//     team: PropTypes.string,
-//     about: PropTypes.string,
-//   }),
-// };
+PlayerForm.propTypes = {
+  obj: PropTypes.shape({
+    imageUrl: PropTypes.string,
+    name: PropTypes.string,
+    position: PropTypes.string,
+    team: PropTypes.string,
+    about: PropTypes.string,
+    firebaseKey: PropTypes.string,
+  }),
+};
