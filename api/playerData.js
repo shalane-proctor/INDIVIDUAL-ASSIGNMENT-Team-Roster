@@ -30,8 +30,19 @@ const createPlayer = (playerObj) => new Promise((resolve, reject) => {
     }).catch(reject);
 });
 
+const updatePlayer = (playerObj) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/players/${playerObj.firebaseKey}.json`, playerObj)
+    .then(resolve)
+    .catch(reject);
+});
+
+const getSinglePlayer = (firebaseKey) => new Promise((resolve, reject) => {
+  axios
+    .get(`${dbUrl}/players/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
 export {
-  getPlayers,
-  deletePlayer,
-  createPlayer,
+  getPlayers, deletePlayer, createPlayer, updatePlayer, getSinglePlayer,
 };
