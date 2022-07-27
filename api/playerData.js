@@ -21,7 +21,17 @@ const deletePlayer = (firebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const createPlayer = (playerObj) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/players.json`, playerObj)
+    .then((response) => {
+      const payload = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/players/${response.data.name}.json`, payload)
+        .then(resolve);
+    }).catch(reject);
+});
+
 export {
   getPlayers,
   deletePlayer,
+  createPlayer,
 };
