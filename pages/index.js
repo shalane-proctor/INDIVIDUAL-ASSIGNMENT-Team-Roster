@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Head from 'next/head';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
 
@@ -7,6 +8,13 @@ function Home() {
   console.warn(user.uid);
   return (
     <>
+      <Head>
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="title, meta, nextjs" />
+        <meta name="author" content="Shalane Proctor" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Space Race</title>
+      </Head>
       <div
         className="text-center d-flex flex-column justify-content-center "
         style={{

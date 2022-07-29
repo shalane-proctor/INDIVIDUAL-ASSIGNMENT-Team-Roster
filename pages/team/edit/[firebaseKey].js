@@ -11,6 +11,6 @@ export default function EditAPlayer() {
     getSinglePlayer(firebaseKey).then(setEditPlayer);
   }, [firebaseKey]);
   return (
-    <PlayerForm obj={editPlayer} />
+    <><title>Space Race - Reassign</title><meta name="description" content="Meta description for the team page" /><PlayerForm obj={editPlayer} /></>
   );
 }
