@@ -15,40 +15,34 @@ export default function PlayerCard({ playerObj, onUpdate }) {
 
   return (
     <Card>
-      <Card.Header>
-        <Nav variant="tabs" defaultActiveKey="#first">
-          <Nav.Item>
-            <Nav.Link href="#first">Player</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="#link">About</Nav.Link>
-          </Nav.Item>
-        </Nav>
-      </Card.Header>
-      <Card.Img
-        variant="left"
-        className="card-img-left example-card-img-responsive"
-        src={playerObj.imageUrl}
-        style={{
-          // height: '10vh',
-          padding: '30px',
-          maxWidth: '20%',
-          margin: '0 auto',
-        }}
-      />
+      <Card.Img variant="top" className="card-img-top example-card-img-responsive" src={playerObj.imageUrl} />
       <Card.Body>
-        <Card.Title>
-          {playerObj.name} - {playerObj.position}
-        </Card.Title>
-        <Card.Text>Name: {playerObj.name}</Card.Text>
-        <Card.Text>Team: {playerObj.team}</Card.Text>
-        <Card.Text>Position: {playerObj.position}</Card.Text>
-        <Link href={`/team/edit/${playerObj.firebaseKey}`} passHref>
-          <Button variant="primary">Reassign</Button>
-        </Link>
-        <Button variant="primary" onClick={deleteThisPlayer}>
-          Relieve of duty
-        </Button>
+        <Card.Header className="topnav-right">
+          <Nav variant="tabs" defaultActiveKey="#first">
+            <Nav.Item>
+              <Nav.Link href="#first">Player</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="#link">About</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Card.Header>
+        <div className="player-card-text">
+          <Card.Title>
+            {playerObj.name} - {playerObj.position}
+          </Card.Title>
+          <Card.Text>Name: {playerObj.name}</Card.Text>
+          <Card.Text>Team: {playerObj.team}</Card.Text>
+          <Card.Text>Position: {playerObj.position}</Card.Text>
+          <div className="project-buttons">
+            <Link href={`/team/edit/${playerObj.firebaseKey}`} passHref>
+              <Button variant="primary">Reassign</Button>
+            </Link>
+            <Button variant="primary" onClick={deleteThisPlayer}>
+              Relieve of duty
+            </Button>
+          </div>
+        </div>
       </Card.Body>
     </Card>
   );

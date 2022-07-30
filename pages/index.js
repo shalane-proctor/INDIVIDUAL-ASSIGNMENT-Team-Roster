@@ -16,17 +16,18 @@ function Home() {
         <title>Space Race</title>
       </Head>
       <div
-        className="text-center d-flex flex-column justify-content-center "
+        className="title-and-text"
         style={{
           padding: '30px',
           maxWidth: '3000px',
-          margin: '0 auto',
+          margin: '20px',
+          background: 'rgb(128, 146, 163, 0.7)',
         }}
       >
         <h1>Welcome to the Space Race Team Rosters! </h1>
         <h6>The Space Race is a collection of different styles of starship and rover racing! You can expect to experience supreme entertainment inclusive to all interstellar races and beings. Here you can follow your favorite teams and add new players.</h6>
       </div>
-      <div>
+      <div className="project-buttons">
         <Link passHref href="/team">
           <Button variant="info" type="button" size="lg" width="100px" className="copy-btn text-center align-content-center">
             View the Team!

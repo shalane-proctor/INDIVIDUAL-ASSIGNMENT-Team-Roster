@@ -32,13 +32,22 @@ export default function TeamPage() {
           margin: '0 auto',
         }}
       >
-        <h3>Please enjoy creating fantasy space race players for the Galactic Troopers!</h3>
-        <p>The Galactic Troopers are a strong team led by a fearless captain! They not only participate in the Space Race, but during their off seasons they bravely explore through the depths of the universe.</p>
-        <Link href="/team/new" passHref>
-          <Button variant="info" type="button" size="lg" className="copy-btn">
-            Add Player
-          </Button>
-        </Link>
+        <div
+          className="title-and-text"
+          style={{
+            background: 'rgb(128, 146, 163, 0.7)',
+          }}
+        >
+          <h3>Please enjoy creating fantasy space race players for the Galactic Troopers!</h3>
+          <p>The Galactic Troopers are a strong team led by a fearless captain! They not only participate in the Space Race, but during their off seasons they bravely explore through the depths of the universe.</p>
+        </div>
+        <div className="project-buttons">
+          <Link href="/team/new" passHref>
+            <Button variant="info" type="button" size="lg" className="copy-btn">
+              Add Player
+            </Button>
+          </Link>
+        </div>
         <div className="flex-wrap">
           {players.map((player) => (
             <PlayerCard key={player.firebaseKey} playerObj={player} onUpdate={getAllPlayers} />
