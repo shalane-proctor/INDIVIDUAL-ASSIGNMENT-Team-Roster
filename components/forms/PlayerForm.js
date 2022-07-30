@@ -49,16 +49,16 @@ export default function PlayerForm({ obj }) {
   return (
     <Form onSubmit={handleSubmit}>
       <h2>{obj.firebaseKey ? 'Reassign' : 'Add'} Player</h2>
-      <FloatingLabel controlId="floatingTextarea" label="Name" className="mb-3">
+      <FloatingLabel controlId="floatingTextarea" label="Name" className="mb-3 form-text-background">
         <Form.Control type="text" placeholder="Player Name" name="name" value={formInput.name} onChange={handleChange} required />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingTextarea" label="Position" className="mb-3">
+      <FloatingLabel controlId="floatingTextarea" label="Position" className="mb-3 form-text-background">
         <Form.Control type="text" placeholder="Player Position" name="position" value={formInput.position} onChange={handleChange} required />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingTextarea" label="Team" className="mb-3">
+      <FloatingLabel controlId="floatingTextarea" label="Team" className="mb-3 form-text-background">
         <Form.Control type="text" placeholder="team" name="team" value={formInput.team} onChange={handleChange} required />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingTextarea2" label="About">
+      <FloatingLabel className="form-text-background" controlId="floatingTextarea2" label="About">
         <Form.Control type="text" placeholder="About" style={{ height: '100px' }} name="about" value={formInput.about} onChange={handleChange} />
       </FloatingLabel>
       <Button type="submit">{obj.firebaseKey ? 'Reassign' : 'Add'} Player</Button>
