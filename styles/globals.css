@@ -5,8 +5,7 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: monospace;
     background: url("https://www.fonewalls.com/wp-content/uploads/2022/01/Amoled-Earth-Planet-4K-Phone-Wallpaper-768x1365.jpg") no-repeat center center fixed;
     -webkit-background-size: cover; /* For WebKit*/
     -moz-background-size: cover;    /* Mozilla*/

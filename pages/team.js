@@ -38,13 +38,13 @@ export default function TeamPage() {
             background: 'rgb(128, 146, 163, 0.7)',
           }}
         >
-          <h3>Please enjoy creating fantasy space race players for the Galactic Troopers!</h3>
-          <p>The Galactic Troopers are a strong team led by a fearless captain! They not only participate in the Space Race, but during their off seasons they bravely explore through the depths of the universe.</p>
+          <h3>Please enjoy creating fantasy space race crew for the Galactic Troopers!</h3>
+          <p>The Galactic Troopers are a strong crew led by a fearless captain! They not only participate in the Space Race, but during their off seasons they bravely explore through the depths of the universe.</p>
         </div>
         <div className="project-buttons">
           <Link href="/team/new" passHref>
             <Button variant="info" type="button" size="lg" className="copy-btn">
-              Add Player
+              Recruit
             </Button>
           </Link>
         </div>

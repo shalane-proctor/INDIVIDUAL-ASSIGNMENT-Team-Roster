@@ -61,7 +61,7 @@ export default function PlayerForm({ obj }) {
       <FloatingLabel className="form-text-background" controlId="floatingTextarea2" label="About">
         <Form.Control type="text" placeholder="About" style={{ height: '100px' }} name="about" value={formInput.about} onChange={handleChange} />
       </FloatingLabel>
-      <Button type="submit">{obj.firebaseKey ? 'Reassign' : 'Add'} Player</Button>
+      <Button type="submit">{obj.firebaseKey ? 'Reassign' : 'Recruit'}</Button>
     </Form>
   );
 }

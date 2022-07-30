@@ -24,13 +24,13 @@ function Home() {
           background: 'rgb(128, 146, 163, 0.7)',
         }}
       >
-        <h1>Welcome to the Space Race Team Rosters! </h1>
-        <h6>The Space Race is a collection of different styles of starship and rover racing! You can expect to experience supreme entertainment inclusive to all interstellar races and beings. Here you can follow your favorite teams and add new players.</h6>
+        <h1>Welcome to the Space Race Crew Rosters! </h1>
+        <h6>The Space Race is a collection of different styles of starship and rover racing! You can expect to experience supreme entertainment inclusive to all interstellar races and beings. Here you can follow your favorite crews and recruit new crew members.</h6>
       </div>
       <div className="project-buttons">
         <Link passHref href="/team">
           <Button variant="info" type="button" size="lg" width="100px" className="copy-btn text-center align-content-center">
-            View the Team!
+            View the Crew!
           </Button>
         </Link>
       </div>
