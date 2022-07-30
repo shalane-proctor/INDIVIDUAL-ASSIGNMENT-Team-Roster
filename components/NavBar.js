@@ -18,13 +18,13 @@ export default function NavBar() {
           <Nav className="me-auto">
             {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
             <Link passHref href="/team">
-              <Nav.Link>Team Roster</Nav.Link>
+              <Nav.Link>Crew Roster</Nav.Link>
             </Link>
             <Link passHref href="/team/new">
-              <Nav.Link>Add Player</Nav.Link>
+              <Nav.Link>Recruit Player</Nav.Link>
             </Link>
             <Button variant="outline-danger" onClick={signOut}>
-              Sign Out
+              Return to Earth
             </Button>
           </Nav>
         </Navbar.Collapse>

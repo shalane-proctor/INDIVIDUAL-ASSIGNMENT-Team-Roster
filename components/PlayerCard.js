@@ -20,7 +20,7 @@ export default function PlayerCard({ playerObj, onUpdate }) {
         <Card.Header className="topnav-right">
           <Nav variant="tabs" defaultActiveKey="#first">
             <Nav.Item>
-              <Nav.Link href="#first">Player</Nav.Link>
+              <Nav.Link href="#first">Crew Member</Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link href="#link">About</Nav.Link>
@@ -32,7 +32,7 @@ export default function PlayerCard({ playerObj, onUpdate }) {
             {playerObj.name} - {playerObj.position}
           </Card.Title>
           <Card.Text>Name: {playerObj.name}</Card.Text>
-          <Card.Text>Team: {playerObj.team}</Card.Text>
+          <Card.Text>Crew: {playerObj.team}</Card.Text>
           <Card.Text>Position: {playerObj.position}</Card.Text>
           <div className="project-buttons">
             <Link href={`/team/edit/${playerObj.firebaseKey}`} passHref>
